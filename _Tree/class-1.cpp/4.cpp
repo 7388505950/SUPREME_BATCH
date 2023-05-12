@@ -1,4 +1,5 @@
-//Create a Tree 
+//Height of Tree 
+//======================================
 #include<iostream>
 using namespace std;
 class Node
@@ -31,8 +32,20 @@ Node* Build_Tree(){
 
     return root;
 }
+int HeightTree(Node *root){
+    if(root==NULL)
+    return 0;
+    
+
+    int leftAns=HeightTree(root->left);
+    int rightAns=HeightTree(root->right);
+    int ans=max(leftAns,rightAns)+1;
+    return ans;
+}
 int main()
 {
     Node *root=Build_Tree();
+    cout<<"Height of Tree :"<<HeightTree(root);
+
     return 0;
 }
